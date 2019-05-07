@@ -14,11 +14,11 @@ This will create a folder called `install_pytorch` which contains the files need
 
 ## Make a conda environment and install
 
-Next we create a conda environment that includes pytorch and its dependencies (note that you may consider replacing the environment name "myenv" with something more specific to your work):
+Next we create a conda environment that includes pytorch and its dependencies (note that you may consider replacing the environment name "pytorch_tutorial" with something more specific to your work):
 
 ```
 module load anaconda3
-conda create --name myenv pytorch torchvision cudatoolkit=9.0 -c pytorch
+conda create --name pytorch_tutorial pytorch torchvision cudatoolkit=9.0 -c pytorch
 ```
 
 While we have a newer version of the CUDA toolkit installed on the HPC clusters, PyTorch recommends version 9.
@@ -30,7 +30,7 @@ you'll have access to `conda` and can use it to access the Python virtual enviro
 Activate the conda environment:
 
 ```
-conda activate myenv
+conda activate pytorch_tutorial
 ```
 
 Let's make sure our installation can find the GPU by launching an interactive session on one of the compute nodes:
@@ -84,7 +84,7 @@ ssh tiger-iXXgYY
 
 Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. Be sure to repeat this analysis with your actual research script.
 
-Type `Crtl+C` to exit the `watch` screen. Type `exit` to return to the head node.
+Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node.
 
 ## More examples
 
