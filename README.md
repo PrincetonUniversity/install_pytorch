@@ -82,7 +82,7 @@ The rightmost column labeled "NODELIST(REASON)" gives the name of the node where
 ssh tiger-iXXgYY
 ```
 
-Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. Be sure to repeat this analysis with your actual research script.
+Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research script to ensure that your GPUs are nearly fully utilized.
 
 Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node.
 
