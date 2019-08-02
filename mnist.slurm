@@ -13,6 +13,6 @@ module purge
 module load anaconda3
 module list
 
-conda activate pytorch_tutorial
+conda activate torch-env
 
 srun python mnist_classify.py
