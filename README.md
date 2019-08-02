@@ -14,11 +14,11 @@ This will create a folder called `install_pytorch` which contains the files need
 
 ## Make a conda environment and install
 
-Next we create a conda environment that includes pytorch and its dependencies (note that you may consider replacing the environment name "pytorch_tutorial" with something more specific to your work):
+Next we create a conda environment that includes pytorch and its dependencies (note that you may consider replacing the environment name "torch-env" with something more specific to your work):
 
 ```
 module load anaconda3
-conda create --name pytorch_tutorial pytorch torchvision cudatoolkit=9.0 -c pytorch
+conda create --name torch-env pytorch torchvision cudatoolkit=9.0 -c pytorch
 ```
 
 While we have a newer version of the CUDA toolkit installed on the HPC clusters, PyTorch recommends version 9.
@@ -30,7 +30,7 @@ you'll have access to `conda` and can use it to access the Python virtual enviro
 Activate the conda environment:
 
 ```
-conda activate pytorch_tutorial
+conda activate torch-env
 ```
 
 Let's make sure our installation can find the GPU by launching an interactive session on one of the compute nodes:
@@ -73,7 +73,7 @@ Once the job runs, you'll have a `slurm-xxxxx.out` file in the `install_pytorch`
 To see how effectively your job is using the GPU, immediately after submiting the job run the following command:
 
 ```
-squeue -u <your-username>
+squeue -u $USER
 ```
 
 The rightmost column labeled "NODELIST(REASON)" gives the name of the node where your job is running. SSH to this node:
