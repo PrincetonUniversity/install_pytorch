@@ -1,6 +1,6 @@
 # Installing and Running PyTorch on the HPC Clusters
 
-CSES recommends users follow the directions below to install PyTorch on the HPC clusters at Princeton:
+We recommend the following procedure to install PyTorch on the HPC clusters at Princeton:
 
 ### Adroit or TigerGPU
 
@@ -16,8 +16,10 @@ conda activate torch-env
 module load anaconda3
 conda create --name=torch-env --channel https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/ pytorch
 conda activate torch-env
-# accept the license agreement
+# accept the license agreement if asked
 ```
+
+Note that the `torchvision` package is not presently available for the PowerPC architecture. If you need datasets or models from this package you will need to install it on another cluster and transfer the code you need to Traverse.
 
 ### Perseus or Della
 
@@ -31,7 +33,7 @@ Be sure to include `conda activate torch-env` and #SBATCH --gres=gpu:1 in your S
 
 # Example
 
-The full example below shows how to run a simple PyTorch script on one of the clusters.
+The example below shows how to run a simple PyTorch script on one of the clusters.
 
 ## Clone the repo
 
@@ -45,9 +47,10 @@ This will create a folder called `install_pytorch` which contains the files need
 
 ## Make a conda environment and install
 
-Next we create a conda environment that includes pytorch and its dependencies (note that you may consider replacing the environment name "torch-env" with something more specific to your work):
+Next we create a conda environment that includes PyTorch and its dependencies (note that you may consider replacing the environment name "torch-env" with something more specific to your work):
 
 ```
+# adroit or tigergpu
 module load anaconda3
 conda create --name torch-env pytorch torchvision cudatoolkit=9.0 -c pytorch
 ```
@@ -124,4 +127,4 @@ More PyTorch example scripts are found here:
 https://github.com/pytorch/examples
 ```
 
-Please send questions/issues to cses@princeton.edu.
+If you encounter any difficulties while installing PyTorch on one of our HPC clusters then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a <a href="https://researchcomputing.princeton.edu/education/help-sessions">help session</a>.
