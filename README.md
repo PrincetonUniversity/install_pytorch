@@ -1,6 +1,37 @@
 # Installing and Running PyTorch on the HPC Clusters
 
-CSES recommends users follow the directions below to install PyTorch on the GPU clusters (Tiger and Adroit).
+CSES recommends users follow the directions below to install PyTorch on the HPC clusters at Princeton:
+
+### Adroit or TigerGPU
+
+```
+module load anaconda3
+conda create --name torch-env pytorch torchvision cudatoolkit=9.0 -c pytorch
+conda activate torch-env
+```
+
+### Traverse
+
+```
+module load anaconda3
+conda create --name=torch-env --channel https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/ pytorch
+conda activate torch-env
+# accept the license agreement
+```
+
+### Perseus or Della
+
+```
+module load anaconda3
+conda create --name torch-env pytorch torchvision -c pytorch
+conda activate torch-env
+```
+
+Be sure to include `conda activate torch-env` and #SBATCH --gres=gpu:1 in your Slurm script on the GPU clusters. `conda activate torch-env` is required on the CPU clusters (Perseus and Della).
+
+# Example
+
+The full example below shows how to run a simple PyTorch script on one of the clusters.
 
 ## Clone the repo
 
