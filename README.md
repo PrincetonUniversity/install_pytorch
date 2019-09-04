@@ -1,7 +1,7 @@
 # Installing and Running PyTorch on the HPC Clusters
 
 
-[PyTorch](https://pytorch.org) is a popular deep learning library for training artificial neural networks. The installation procedure depend on the cluster:
+[PyTorch](https://pytorch.org) is a popular deep learning library for training artificial neural networks. The installation procedure depends on the cluster:
 
 ### Adroit or TigerGPU
 
@@ -30,7 +30,7 @@ conda create --name torch-env pytorch torchvision -c pytorch
 conda activate torch-env
 ```
 
-Be sure to include `conda activate torch-env` and #SBATCH --gres=gpu:1 in your Slurm script on the GPU clusters. `conda activate torch-env` is required on the CPU clusters (Perseus and Della).
+Be sure to include `conda activate torch-env` and `#SBATCH --gres=gpu:1` in your Slurm script on the GPU clusters. `conda activate torch-env` is required on the CPU clusters (Perseus and Della).
 
 # Example
 
