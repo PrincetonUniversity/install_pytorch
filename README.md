@@ -1,6 +1,7 @@
 # Installing and Running PyTorch on the HPC Clusters
 
-We recommend the following procedure to install PyTorch on the HPC clusters at Princeton:
+
+[PyTorch](https://pytorch.org) is a popular deep learning library for training artificial neural networks. The installation procedure depend on the cluster:
 
 ### Adroit or TigerGPU
 
@@ -19,7 +20,7 @@ conda activate torch-env
 # accept the license agreement if asked
 ```
 
-Note that the `torchvision` package is not presently available for the PowerPC architecture. If you need datasets or models from this package you will need to install it on another cluster and transfer the code you need to Traverse.
+Note that the `torchvision` package is not presently available for the ppc64le architecture. If you need datasets or models from this package you will need to install it on another cluster and then transfer the files you need to Traverse.
 
 ### Perseus or Della
 
