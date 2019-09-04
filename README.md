@@ -7,9 +7,11 @@
 
 ```
 module load anaconda3
-conda create --name torch-env pytorch torchvision cudatoolkit=9.0 -c pytorch
+conda create --name torch-env pytorch torchvision cudatoolkit -c pytorch
 conda activate torch-env
 ```
+
+Be sure to include `conda activate torch-env` and `#SBATCH --gres=gpu:1` in your Slurm script.
 
 ### Traverse
 
@@ -19,6 +21,8 @@ conda create --name=torch-env --channel https://public.dhe.ibm.com/ibmdl/export/
 conda activate torch-env
 # accept the license agreement if asked
 ```
+
+Be sure to include `conda activate torch-env` and `#SBATCH --gpus-per-task=1` in your Slurm script.
 
 Note that the `torchvision` package is not presently available for the ppc64le architecture. If you need datasets or models from this package you will need to install it on another cluster and then transfer the files you need to Traverse.
 
@@ -30,7 +34,7 @@ conda create --name torch-env pytorch torchvision -c pytorch
 conda activate torch-env
 ```
 
-Be sure to include `conda activate torch-env` and `#SBATCH --gres=gpu:1` in your Slurm script on the GPU clusters. `conda activate torch-env` is required on the CPU clusters (Perseus and Della).
+Be sure to include `conda activate torch-env` in your Slurm script.
 
 # Example
 
