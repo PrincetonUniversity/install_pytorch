@@ -26,7 +26,7 @@ Be sure to include `conda activate torch-env` and `#SBATCH --gpus-per-task=1` in
 
 Note that the `torchvision` package is not presently available for the ppc64le architecture. If you need datasets or models from this package you will need to install it on another cluster and then transfer the files you need to Traverse.
 
-### Perseus or Della
+### Perseus, Della or Tiger CPU
 
 ```
 module load anaconda3
@@ -42,7 +42,7 @@ The example below shows how to run a simple PyTorch script on one of the cluster
 
 ## Clone the repo
 
-Log in to a head node on one of the GPU clusters (Tiger or Adroit). Then clone the repo using:
+Log in to a head node on one of the clusters. Then clone the repo using:
 
 ```
 git clone https://github.com/PrincetonUniversity/install_pytorch.git
