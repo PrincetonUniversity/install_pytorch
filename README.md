@@ -22,7 +22,7 @@ conda activate torch-env
 # accept the license agreement if asked
 ```
 
-Be sure to include `conda activate torch-env` and `#SBATCH --gpus-per-task=1` in your Slurm script.
+Be sure to include `conda activate torch-env` and `#SBATCH --gpus-per-node=1` in your Slurm script.
 
 Note that the `torchvision` package is not presently available for the ppc64le architecture. If you need datasets or models from this package you will need to install it on another cluster and then transfer the files to Traverse.
 
