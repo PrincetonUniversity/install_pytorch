@@ -57,10 +57,8 @@ Next we create a conda environment that includes PyTorch and its dependencies (n
 ```
 # adroit or tigergpu
 module load anaconda3
-conda create --name torch-env pytorch torchvision cudatoolkit=9.0 -c pytorch
+conda create --name torch-env pytorch torchvision cudatoolkit --channel pytorch
 ```
-
-While we have a newer version of the CUDA toolkit installed on the HPC clusters, PyTorch recommends version 9.
 
 Once the command above completes, as long as you have the `anaconda3` module loaded (current session only,
 you'll note that we load it in the Slurm script `mnist.slurm`),
