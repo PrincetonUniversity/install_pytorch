@@ -7,7 +7,7 @@
 
 ```
 module load anaconda3
-conda create --name torch-env pytorch torchvision cudatoolkit -c pytorch
+conda create --name torch-env pytorch torchvision cudatoolkit --channel pytorch
 conda activate torch-env
 ```
 
