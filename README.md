@@ -80,7 +80,6 @@ When your allocation is granted, you'll be moved to a compute node. Execute the 
 
 ```
 python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
-
 ```
 
 If the output is "True" and "Tesla P100-PCIE-16GB" (on Tiger) or "Tesla V100-SXM2-32GB" (on Traverse) then your installation of PyTorch is GPU-enabled. Type `exit` to return to the head node.
