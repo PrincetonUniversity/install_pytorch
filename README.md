@@ -83,7 +83,7 @@ python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_
 
 ```
 
-If the output is "True" and "Tesla P100-PCIE-16GB" (on Tiger) or "Tesla V100-SXM2-32GB" on Traverse then your installation of PyTorch is GPU-enabled. Type `exit` to return to the head node.
+If the output is "True" and "Tesla P100-PCIE-16GB" (on Tiger) or "Tesla V100-SXM2-32GB" (on Traverse) then your installation of PyTorch is GPU-enabled. Type `exit` to return to the head node.
 
 
 ## Running the example
@@ -125,9 +125,6 @@ Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node
 
 ## More examples
 
-More PyTorch example scripts are found here:
-```
-https://github.com/pytorch/examples
-```
+More PyTorch example scripts are found here: [https://github.com/pytorch/examples](https://github.com/pytorch/examples)
 
 If you encounter any difficulties while installing PyTorch on one of our HPC clusters then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a <a href="https://researchcomputing.princeton.edu/education/help-sessions">help session</a>.
