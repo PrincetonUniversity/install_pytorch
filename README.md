@@ -30,7 +30,7 @@ Note that the `torchvision` package is not presently available for the ppc64le a
 
 ```
 module load anaconda3
-conda create --name torch-env pytorch torchvision --channel pytorch
+conda create --name torch-env pytorch torchvision cpuonly --channel pytorch
 conda activate torch-env
 ```
 
