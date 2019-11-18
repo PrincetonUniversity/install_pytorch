@@ -57,7 +57,7 @@ Next we create a conda environment that includes PyTorch and its dependencies (n
 ```
 # adroit or tigergpu
 module load anaconda3
-conda create --name torch-env pytorch torchvision cudatoolkit --channel pytorch
+conda create --name torch-env pytorch torchvision cudatoolkit=10.1 --channel pytorch
 ```
 
 Once the command above completes, as long as you have the `anaconda3` module loaded (current session only,
