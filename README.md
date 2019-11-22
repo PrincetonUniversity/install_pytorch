@@ -17,7 +17,7 @@ Be sure to include `conda activate torch-env` and `#SBATCH --gres=gpu:1` in your
 
 ```
 module load anaconda3
-conda create --name=torch-env --channel https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda pytorch
+conda create --name=torch-env --channel https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda pytorch torchvision
 conda activate torch-env
 # accept the license agreement if asked
 ```
