@@ -126,6 +126,10 @@ Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node
 
 More PyTorch example scripts are found here: [https://github.com/pytorch/examples](https://github.com/pytorch/examples)
 
+## How to Learn PyTorch
+
+See the [material](https://github.com/Atcold/pytorch-Deep-Learning) and companian webiste ([English](https://atcold.github.io/pytorch-Deep-Learning/) and [Chinese](https://github.com/Atcold/pytorch-Deep-Learning/blob/master/docs/zh/README-ZH.md)) of Prof. Alf Canziani of NYU.
+
 ## Where to Store Your Files
 
 You should run your jobs out of `/scratch/gpfs/<NetID>` on the HPC clusters. These filesystems are very fast and provide vast amounts of storage. **Do not run jobs out of `/tigress` or `/projects`. That is, you should never be writing the output of actively running jobs to those filesystems.** `/tigress` and `/projects` are slow and should only be used for backing up the files that you produce on `/scratch/gpfs`. Your `/home` directory on all clusters is small and it should only be used for storing source code and executables.
