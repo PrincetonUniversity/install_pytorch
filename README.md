@@ -128,7 +128,7 @@ More PyTorch example scripts are found here: [https://github.com/pytorch/example
 
 ## How to Learn PyTorch
 
-See the [material](https://github.com/Atcold/pytorch-Deep-Learning) and companian webiste ([English](https://atcold.github.io/pytorch-Deep-Learning/) and [Chinese](https://github.com/Atcold/pytorch-Deep-Learning/blob/master/docs/zh/README-ZH.md)) of Prof. Alf Canziani of NYU.
+See the [material](https://github.com/Atcold/pytorch-Deep-Learning) and companian webiste ([English](https://atcold.github.io/pytorch-Deep-Learning/) and [Chinese](https://github.com/Atcold/pytorch-Deep-Learning/blob/master/docs/zh/README-ZH.md)) of Prof. [Alf Canziani](https://twitter.com/alfcnz?lang=en) of NYU.
 
 ## Where to Store Your Files
 
