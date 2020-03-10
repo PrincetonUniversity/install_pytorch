@@ -15,4 +15,4 @@ module load anaconda3
 
 conda activate torch-env
 
-srun python mnist_classify.py
+srun python mnist_classify.py --epochs=3
