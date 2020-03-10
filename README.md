@@ -133,10 +133,16 @@ For large models that do not fit in memory, there is the [model parallel](https:
 
 Also take a look at [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning) and [Horovod](https://github.com/horovod/horovod).
 
-
 ## TensorBoard
 
-A useful tool for tracking the progress of PyTorch scripts is [Tensorboard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html). This can be run on the head node in non-intensive cases.
+A useful tool for tracking the progress of PyTorch scripts is [Tensorboard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html). This can be run on the head node in non-intensive cases. Tensorboard is available via Conda.
+
+## Using PyCharm on TigerGPU
+
+This video shows how to launch PyCharm on a TigerGPU node and use its debugger on a TensorFlow script:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=0XmZsfixAdw" target="_blank">
+<img src="http://img.youtube.com/vi/0XmZsfixAdw/0.jpg" alt="PyCharm" width="480" height="270" border="0" /></a>
 
 ## More examples
 
