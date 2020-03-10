@@ -122,6 +122,8 @@ Once on the compute node run `watch -n 1 nvidia-smi`. This will show you a perce
 
 Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node.
 
+[View](https://researchcomputing.princeton.edu/node/7171) the GPU utilization dashboard for TigerGPU.
+
 ## More examples
 
 More PyTorch example scripts are found here: [https://github.com/pytorch/examples](https://github.com/pytorch/examples)
