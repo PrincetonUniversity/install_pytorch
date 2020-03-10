@@ -129,7 +129,7 @@ Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node
 
 If you are getting good GPU utilization then consider using multiple GPUs with [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this case your model will be replicated and fed different batches. Keep in mind that by default the batch size is reduced when multiples GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
 
-For large models that do not fit in memory, there is the [model parallel] approach. In this case the model is distrbuted over multiple GPUs.
+For large models that do not fit in memory, there is the [model parallel](https://pytorch.org/tutorials/intermediate/model_parallel_tutorial.html) approach. In this case the model is distrbuted over multiple GPUs.
 
 Also take a look at [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning) and [Horovod](https://github.com/horovod/horovod).
 
