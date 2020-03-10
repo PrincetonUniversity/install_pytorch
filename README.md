@@ -104,6 +104,19 @@ via `squeue -u <your-username>`.
 
 Once the job runs, you'll have a `slurm-xxxxx.out` file in the `install_pytorch` directory. This log file contains both Slurm and PyTorch messages.
 
+## CPU Multi-threading
+
+Even when using a GPU there are still operations carried out on the CPU. Some of these operations have been written to take advantage of multi-threading via the Intel Math Kernel Library (MKL) (see [example](https://github.com/PrincetonUniversity/gpu_programming_intro/tree/master/05_multithreaded_numpy)). Try different values for `--cpus-per-task` to see if you get a speed advantage.
+
+```
+#!/bin/bash
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=1               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=<T>      # cpu-cores per task (>1 if multi-threaded tasks)
+```
+
+On TigerGPU, there are 7 CPU-cores per GPU. Try values of `T` above from 1 to 7 to see where the optimal value is.
+
 ## Examining GPU utilization
 
 To see how effectively your job is using the GPU, immediately after submiting the job run the following command:
