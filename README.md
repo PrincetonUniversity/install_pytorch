@@ -11,6 +11,14 @@ conda create --name torch-env pytorch torchvision cudatoolkit=10.1 --channel pyt
 conda activate torch-env
 ```
 
+Or maybe you want a few additional packages like matplotlib and tensorboard:
+
+```
+module load anaconda3
+conda create --name torch-env pytorch torchvision cudatoolkit=10.1 matplotlib tensorboard --channel pytorch
+conda activate torch-env
+```
+
 Be sure to include `conda activate torch-env` and `#SBATCH --gres=gpu:1` in your Slurm script.
 
 ### Traverse
