@@ -124,6 +124,20 @@ Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node
 
 [View](https://researchcomputing.princeton.edu/node/7171) the GPU utilization dashboard for TigerGPU.
 
+
+## Using Multiple GPUs
+
+If you are getting good GPU utilization then consider using multiple GPUs with [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this case your model will be replicated and fed different batches. Keep in mind that by default the batch size is reduced when multiples GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
+
+For large models that do not fit in memory, there is the [model parallel] approach. In this case the model is distrbuted over multiple GPUs.
+
+Also take a look at [PyTorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning) and [Horovod](https://github.com/horovod/horovod).
+
+
+## TensorBoard
+
+A useful tool for tracking the progress of PyTorch scripts is [Tensorboard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html). This can be run on the head node in non-intensive cases.
+
 ## More examples
 
 More PyTorch example scripts are found here: [https://github.com/pytorch/examples](https://github.com/pytorch/examples)
