@@ -139,12 +139,9 @@ The rightmost column labeled "NODELIST(REASON)" gives the name of the node where
 ssh tiger-iXXgYY
 ```
 
-Once on the compute node run `watch -n 1 nvidia-smi`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research script to ensure that your GPUs are nearly fully utilized.
+In the command above, you must replace XX and YY with the actual values (e.g., `ssh tiger-i19g1`). Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. TensorFlow by default takes all available GPU memory. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research code to ensure that the GPU is being utilized. For jobs that run for more than 10 minutes you can check utilization by looking at the [TigerGPU utilization dashboard](https://researchcomputing.princeton.edu/node/7171).
 
-Type `Ctrl+C` to exit the `watch` screen. Type `exit` to return to the head node.
-
-[View](https://researchcomputing.princeton.edu/node/7171) the GPU utilization dashboard for TigerGPU.
-
+Type `Ctrl+C` to exit the `watch` command. Type `exit` to leave the compute node and return to the head node.
 
 ## Using Multiple GPUs
 
