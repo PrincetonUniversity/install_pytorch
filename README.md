@@ -51,62 +51,49 @@ The example below shows how to run a simple PyTorch script on one of the cluster
 Log in to a head node on one of the clusters. Then clone the repo using:
 
 ```
-git clone https://github.com/PrincetonUniversity/install_pytorch.git
+$ git clone https://github.com/PrincetonUniversity/install_pytorch.git
+$ cd install_pytorch
 ```
 
 This will create a folder called `install_pytorch` which contains the files needed to follow this tutorial.
 
-## Make a conda environment and install
-
-Next we create a conda environment that includes PyTorch and its dependencies (note that you may consider replacing the environment name "torch-env" with something more specific to your work):
+The compute nodes do not have internet access so we must obtain the data while on the head node:
 
 ```
-# adroit or tigergpu
-module load anaconda3
-conda create --name torch-env pytorch torchvision cudatoolkit=10.1 --channel pytorch
-```
-
-Once the command above completes, as long as you have the `anaconda3` module loaded (current session only,
-you'll note that we load it in the Slurm script `mnist.slurm`),
-you'll have access to `conda` and can use it to access the Python virtual environment you just created.
-
-Activate the conda environment:
-
-```
-conda activate torch-env
-```
-
-Let's make sure our installation can find the GPU by launching an interactive session on one of the compute nodes:
-
-```
-salloc -t 00:05:00 --gres=gpu:1
-```
-
-When your allocation is granted, you'll be moved to a compute node. Execute the following command on the compute node to test for GPU support:
-
-```
-python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
-```
-
-If the output is "True" and "Tesla P100-PCIE-16GB" (on Tiger) or "Tesla V100-SXM2-32GB" (on Traverse) then your installation of PyTorch is GPU-enabled. Type `exit` to return to the head node.
-
-
-## Running the example
-
-The compute nodes do not have internet access so we must obtain the data in advance. Run the `mnist_download.py` script from the `install_pytorch` directory on the head node:
-
-```
-python mnist_download.py
+$ python download_mnist.py
 ```
 
 Now that you have the data, you can schedule the job using the following command:
 
 ```
-sbatch mnist.slurm
+$ sbatch job.slurm
 ```
 
-This will request one GPU, 5 minutes of computing time, and queue the job. You should receive a job number and can check if your job is running or queued
-via `squeue -u <your-username>`.
+The Slurm script used for the job is below:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=torch-test    # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=1               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem=4G                 # total memory per node (4 GB per cpu-core is default)
+#SBATCH --gres=gpu:1             # number of gpus per node
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --mail-type=begin        # send mail when job begins
+#SBATCH --mail-type=end          # send mail when job ends
+#SBATCH --mail-type=fail         # send mail if job fails
+#SBATCH --mail-user=<YourNetID>@princeton.edu
+
+module purge
+module load anaconda3
+
+conda activate torch-env
+
+srun python mnist_classify.py --epochs=3
+```
+
+This will request one GPU, 5 minutes of computing time, and queue the job. You should receive a job number and can check if your job is running or queued via `squeue -u <your-username>`.
 
 Once the job runs, you'll have a `slurm-xxxxx.out` file in the `install_pytorch` directory. This log file contains both Slurm and PyTorch messages.
 
