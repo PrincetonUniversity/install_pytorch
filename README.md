@@ -122,7 +122,7 @@ Type `Ctrl+C` to exit the `watch` command. Type `exit` to leave the compute node
 
 ## Distributed Training or Using Multiple GPUs
 
-Most models can be trained on a single GPU. If you are effectively using the GPU as determined by the procedure above then you may consider running on multiple GPUs. In general this will lead to shorter training times but because more resources are required the queue time will increase. Choose the required resources (number of GPUs, CPU-cores, memory) that minimize the "time to finish" which is the run time plus the time spent in the queue. Do not assume that using all four GPUs on a node is the right choice.
+Most models can be trained on a single GPU. If you are effectively using the GPU as determined by the procedure above then you may consider running on multiple GPUs. In general this will lead to shorter training times but because more resources are required the queue time will increase. Choose the required resources (number of GPUs, number of CPU-cores, memory) that minimize the "time to finish" which is the time the jobs spent running on the compute nodes plus the time spent in the queue. Do not assume that using all four GPUs on a node is the best choice, for instance.
 
 The starting point for training PyTorch models on multiple GPUs is [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this approach a copy of the model is assiged to each GPU where it operates on a different mini-batch. Keep in mind that by default the batch size is reduced when multiple GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
 
