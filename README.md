@@ -42,28 +42,22 @@ conda activate torch-env
 
 Be sure to include `conda activate torch-env` in your Slurm script.
 
-# Example
+## Example
 
-The example below shows how to run a simple PyTorch script on one of the clusters.
+The example below shows how to run a simple PyTorch script on one of the clusters. We will train a simple CNN on the MNIST data set. Begin by connecting to a head node on one of the clusters. Then clone the repo:
 
-## Clone the repo
-
-Log in to a head node on one of the clusters. Then clone the repo using:
-
-```
+```bash
 $ git clone https://github.com/PrincetonUniversity/install_pytorch.git
 $ cd install_pytorch
 ```
 
-This will create a folder called `install_pytorch` which contains the files needed to follow this tutorial.
-
-The compute nodes do not have internet access so we must obtain the data while on the head node:
+This will create a folder called `install_pytorch` which contains the files needed to run this example. The compute nodes do not have internet access so we must obtain the data while on the head node:
 
 ```
 $ python download_mnist.py
 ```
 
-Now that you have the data, you can schedule the job using the following command:
+Inspect the PyTorch script called `mnist_classify.py`. Submit the job to the batch scheduler:
 
 ```
 $ sbatch job.slurm
@@ -93,13 +87,11 @@ conda activate torch-env
 srun python mnist_classify.py --epochs=3
 ```
 
-This will request one GPU, 5 minutes of computing time, and queue the job. You should receive a job number and can check if your job is running or queued via `squeue -u <your-username>`.
-
-Once the job runs, you'll have a `slurm-xxxxx.out` file in the `install_pytorch` directory. This log file contains both Slurm and PyTorch messages.
+You can monitor the status of the job with `squeue -u $USER`. Once the job runs, you'll have a `slurm-xxxxx.out` file in the `install_pytorch` directory. This log file contains both PyTorch and Slurm output.
 
 ## Multithreading
 
-Even when using a GPU there are still operations carried out on the CPU. Some of these operations have been written to take advantage of multi-threading via the Intel Math Kernel Library (MKL) (see [example](https://github.com/PrincetonUniversity/gpu_programming_intro/tree/master/05_multithreaded_numpy)). Try different values for `--cpus-per-task` to see if you get a speed advantage.
+Even when using a GPU there are still operations carried out on the CPU. Some of these operations have been written to take advantage of multithreading. Try different values for `--cpus-per-task` to see if you get a speed-up:
 
 ```
 #!/bin/bash
@@ -108,20 +100,20 @@ Even when using a GPU there are still operations carried out on the CPU. Some of
 #SBATCH --cpus-per-task=<T>      # cpu-cores per task (>1 if multi-threaded tasks)
 ```
 
-On TigerGPU, there are seven CPU-cores for every one GPU. Try values of `<T>` above from 1 to 7 to see where the optimal value is.
+On TigerGPU, there are seven CPU-cores for every one GPU. Try doing a set of runs where you vary `<T>` from 1 to 7 to find the optimal value.
 
-## Examining GPU utilization
+## GPU Utilization
 
-To see how effectively your job is using the GPU, immediately after submiting the job run the following command:
+To see how effectively your job is using the GPU, after submiting the job run the following command:
 
 ```
-squeue -u $USER
+$ squeue -u $USER
 ```
 
 The rightmost column labeled "NODELIST(REASON)" gives the name of the node where your job is running. SSH to this node:
 
 ```
-ssh tiger-iXXgYY
+$ ssh tiger-iXXgYY
 ```
 
 In the command above, you must replace XX and YY with the actual values (e.g., `ssh tiger-i19g1`). Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. TensorFlow by default takes all available GPU memory. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research code to ensure that the GPU is being utilized. For jobs that run for more than 10 minutes you can check utilization by looking at the [TigerGPU utilization dashboard](https://researchcomputing.princeton.edu/node/7171). See the bottom of that page for tips on improving utilization.
