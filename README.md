@@ -116,13 +116,15 @@ The rightmost column labeled "NODELIST(REASON)" gives the name of the node where
 $ ssh tiger-iXXgYY
 ```
 
-In the command above, you must replace XX and YY with the actual values (e.g., `ssh tiger-i19g1`). Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. TensorFlow by default takes all available GPU memory. For this specific example you will see that only about 10% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research code to ensure that the GPU is being utilized. For jobs that run for more than 10 minutes you can check utilization by looking at the [TigerGPU utilization dashboard](https://researchcomputing.princeton.edu/node/7171). See the bottom of that page for tips on improving utilization.
+In the command above, you must replace XX and YY with the actual values (e.g., `ssh tiger-i19g1`). Once on the compute node run `watch -n 1 gpustat`. This will show you a percentage value indicating how effectively your code is using the GPU. The memory allocated to the GPU is also available. For this specific example you will see that only about 12% of the GPU cores are utilized. Given that a CNN is being trained on small images (i.e., 28x28 pixels) this is not surprising. You should repeat this analysis with your actual research code to ensure that the GPU is being utilized. For jobs that run for more than 10 minutes you can check utilization by looking at the [TigerGPU utilization dashboard](https://researchcomputing.princeton.edu/node/7171). See the bottom of that page for tips on improving utilization.
 
 Type `Ctrl+C` to exit the `watch` command. Type `exit` to leave the compute node and return to the head node.
 
 ## Distributed Training or Using Multiple GPUs
 
-If you are getting good GPU utilization then consider using multiple GPUs with [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this case your model will be replicated and fed different batches. Keep in mind that by default the batch size is reduced when multiples GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
+Most models can be trained on a single GPU. If you are effectively using the GPU as determined by the procedure above then you may consider running on multiple GPUs. In general this will lead to shorter training times but because more resources are required the queue time will increase. Choose the required resources (number of GPUs, CPU-cores, memory) that minimize the "time to finish" which is the run time plus the time spent in the queue. Do not assume that using all four GPUs on a node is the right choice.
+
+The starting point for training PyTorch models on multiple GPUs is [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this approach a copy of the model is assiged to each GPU where it operates on a different mini-batch. Keep in mind that by default the batch size is reduced when multiple GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
 
 For large models that do not fit in memory, there is the [model parallel](https://pytorch.org/tutorials/intermediate/model_parallel_tutorial.html) approach. In this case the model is distrbuted over multiple GPUs.
 
