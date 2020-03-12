@@ -132,7 +132,7 @@ Also take a look at [PyTorch Lightning](https://github.com/PyTorchLightning/pyto
 
 ## TensorBoard
 
-A useful tool for tracking the progress of PyTorch scripts is [Tensorboard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html). This can be run on the head node in non-intensive cases. Tensorboard is available via Conda.
+A useful tool for tracking the training progress of a PyTorch model is [TensorBoard](https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html). This can be run on the head node in non-intensive cases. TensorBoard is available via Conda (see installation instructions for TigerGPU above).
 
 ## Using PyCharm on TigerGPU
 
