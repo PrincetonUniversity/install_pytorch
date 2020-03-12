@@ -81,7 +81,6 @@ The Slurm script used for the job is below:
 
 module purge
 module load anaconda3
-
 conda activate torch-env
 
 srun python mnist_classify.py --epochs=3
