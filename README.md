@@ -120,7 +120,7 @@ In the command above, you must replace XX and YY with the actual values (e.g., `
 
 Type `Ctrl+C` to exit the `watch` command. Type `exit` to leave the compute node and return to the head node.
 
-## Distributed Training or Using Mulitiple GPUs
+## Distributed Training or Using Multiple GPUs
 
 If you are getting good GPU utilization then consider using multiple GPUs with [DataParallel](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html). In this case your model will be replicated and fed different batches. Keep in mind that by default the batch size is reduced when multiples GPUs are used. Be sure to use a sufficiently large batch size to keep each GPU busy.
 
