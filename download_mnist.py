@@ -1,4 +1,6 @@
 import torchvision
+import warnings
+warnings.filterwarnings("ignore")
 
 # Compute nodes do not have internet so download the data in advance
 
