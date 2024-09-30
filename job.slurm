@@ -11,7 +11,7 @@
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load anaconda3/2024.2
+module load anaconda3/2024.6
 conda activate torch-env
 
 python mnist_classify.py --epochs=3
