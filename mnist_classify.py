@@ -2,6 +2,7 @@
 # https://github.com/pytorch/examples/blob/master/mnist/main.py
 
 from __future__ import print_function
+import os
 import argparse
 import torch
 import torch.nn as nn
@@ -114,7 +115,7 @@ def main():
     train_kwargs = {'batch_size': args.batch_size}
     test_kwargs = {'batch_size': args.test_batch_size}
     if use_cuda:
-        cuda_kwargs = {'num_workers': 1,
+        cuda_kwargs = {'num_workers': int(os.environ["SLURM_CPUS_PER_TASK"]),
                        'pin_memory': True,
                        'shuffle': True}
         train_kwargs.update(cuda_kwargs)
