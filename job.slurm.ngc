@@ -10,4 +10,4 @@
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-singularity exec --nv $HOME/software/pytorch_25.08-py3.sif python3 mnist_classify.py --epochs=3
+apptainer exec --nv $HOME/software/pytorch_25.08-py3.sif python3 mnist_classify.py --epochs=3
