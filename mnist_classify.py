@@ -1,4 +1,6 @@
-# https://github.com/pytorch/examples/blob/master/mnist/main.py (with change to num_workers)
+
+# https://github.com/pytorch/examples/blob/master/mnist/main.py
+# edits made to num_workers and v2 transforms
 
 import os
 import argparse
@@ -6,7 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torchvision import datasets, transforms
+from torchvision import datasets
+from torchvision.transforms import v2
 from torch.optim.lr_scheduler import StepLR
 
 
@@ -116,13 +119,13 @@ def main():
         train_kwargs.update(accel_kwargs)
         test_kwargs.update(accel_kwargs)
 
-    transform=transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,))
+    transform=v2.Compose([
+        v2.ToTensor(),
+        v2.Normalize((0.1307,), (0.3081,))
         ])
-    dataset1 = datasets.MNIST('../data', train=True, download=True,
+    dataset1 = datasets.MNIST('./data', train=True, download=False,
                        transform=transform)
-    dataset2 = datasets.MNIST('../data', train=False,
+    dataset2 = datasets.MNIST('./data', train=False, download=False,
                        transform=transform)
     train_loader = torch.utils.data.DataLoader(dataset1,**train_kwargs)
     test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
